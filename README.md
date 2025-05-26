@@ -1,5 +1,5 @@
 # React and ASP.NET todolist app
-### Minimal API backend, react tailwindcss frontend
+### Minimal API EFcore sqlite backend, react tailwindcss frontend
 Fast and minimal reproduction of the classic to-do app, a hello world to learning a new technology one would say.
 
 To run it yourself just add and apply migrations in the backend.
