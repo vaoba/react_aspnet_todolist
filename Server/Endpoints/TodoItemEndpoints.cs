@@ -12,7 +12,7 @@ public static class TodoItemEndpoints
         {
             try
             {
-                var result = await context.TodoItems.Where(i => i.ListId == id).ToListAsync();
+                var result = await context.TodoItems.Where(i => i.ListId == id).OrderByDescending(i => i.Id).ToListAsync();
                 return Results.Ok(result);
             }
             catch (Exception e)

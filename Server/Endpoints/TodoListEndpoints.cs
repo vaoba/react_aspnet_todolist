@@ -12,7 +12,7 @@ public static class TodoListEndpoints
         {
             try
             {
-                var results = await context.TodoLists.ToListAsync();
+                var results = await context.TodoLists.OrderByDescending(i => i.Id).ToListAsync();
                 return Results.Ok(results);
             }
             catch (Exception e)
