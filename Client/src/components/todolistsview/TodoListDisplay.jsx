@@ -9,7 +9,10 @@ const TodoListDisplay = ({ id, name, deleteClicked }) => {
             className={
                'group flex w-full flex-row content-center items-center justify-between gap-3 rounded-lg bg-zinc-700 p-3 transition-all duration-150 ease-out hover:scale-102'
             }>
-            <h3 className={'cursor-pointer transition-colors duration-150 group-hover:text-zinc-400'}>
+            <h3
+               className={
+                  'cursor-pointer transition-colors duration-150 group-hover:text-zinc-400'
+               }>
                {name}
             </h3>
          </Link>
@@ -18,7 +21,7 @@ const TodoListDisplay = ({ id, name, deleteClicked }) => {
                className={
                   'cursor-pointer rounded-md bg-rose-600 px-4 text-center transition-all duration-150 hover:scale-105 hover:bg-rose-400 active:scale-98 active:bg-rose-800'
                }
-            onClick={() => deleteClicked(id)}>
+               onClick={() => deleteClicked(id)}>
                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TextInputAdd from '../TextInputAdd.jsx';
 import TodoListDisplay from './TodoListDisplay.jsx';
-import { Link } from 'react-router';
 
 const TodoListsView = () => {
    const [todoLists, setTodoLists] = useState([]);
@@ -11,20 +10,20 @@ const TodoListsView = () => {
       await postTodoList(value);
       await fetchTodoLists();
    };
-   
+
    const handleTodoListDeleted = async (value) => {
       await deleteTodoList(value);
       await fetchTodoLists();
-   }
-   
+   };
+
    const deleteTodoList = async (value) => {
-      const response = await fetch(`http://localhost:5234/TodoLists/${value}`, {
+      await fetch(`http://localhost:5234/TodoLists/${value}`, {
          method: 'DELETE',
          headers: {
             'Content-Type': 'application/json',
          },
-      })
-   }
+      });
+   };
 
    const postTodoList = async (value) => {
       try {
@@ -72,11 +71,12 @@ const TodoListsView = () => {
 
    return (
       <div className={'flex max-w-1/2 min-w-1/6 flex-col justify-center gap-4'}>
-         <div to="/" className={'mb-4 flex flex-row justify-center'}>
+         <div className={'mb-4 flex flex-row justify-center'}>
             <img
                src={'/logo.svg'}
+               alt={'logo'}
                className={
-                  'cursor-pointer w-1/2 min-w-48 transition-transform duration-250 ease-out hover:scale-102'
+                  'w-1/2 min-w-48 cursor-pointer transition-transform duration-250 ease-out hover:scale-102'
                }
             />
          </div>
@@ -87,7 +87,12 @@ const TodoListsView = () => {
             ) : (
                <>
                   {todoLists.map((item) => (
-                     <TodoListDisplay key={item.id} id={item.id} name={item.name} deleteClicked={handleTodoListDeleted}/>
+                     <TodoListDisplay
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        deleteClicked={handleTodoListDeleted}
+                     />
                   ))}
                </>
             )}

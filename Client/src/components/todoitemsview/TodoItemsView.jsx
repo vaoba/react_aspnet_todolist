@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {Link, useParams} from "react-router";
-import TextInputAdd from "../TextInputAdd.jsx";
-import TodoItemDisplay from "./TodoItemDisplay.jsx";
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
+import TextInputAdd from '../TextInputAdd.jsx';
+import TodoItemDisplay from './TodoItemDisplay.jsx';
 
 const TodoItemsView = () => {
    const [todoItems, setTodoItems] = useState([]);
@@ -21,9 +21,9 @@ const TodoItemsView = () => {
    const deleteCompletedTodos = async () => {
       try {
          const response = await fetch(`http://localhost:5234/TodoLists/${id}/Clean`, {
-            method: "DELETE",
+            method: 'DELETE',
             headers: {
-               "Content-Type": "application/json",
+               'Content-Type': 'application/json',
             },
          });
 
@@ -40,9 +40,9 @@ const TodoItemsView = () => {
    const postTodo = async (value) => {
       try {
          const response = await fetch(`http://localhost:5234/TodoLists/${id}`, {
-            method: "POST",
+            method: 'POST',
             headers: {
-               "Content-Type": "application/json",
+               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ name: value }),
          });
@@ -58,9 +58,9 @@ const TodoItemsView = () => {
    const putTodo = async (dto) => {
       try {
          const response = await fetch(`http://localhost:5234/TodoLists/${id}`, {
-            method: "PUT",
+            method: 'PUT',
             headers: {
-               "Content-Type": "application/json",
+               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                id: dto.id,
@@ -79,15 +79,15 @@ const TodoItemsView = () => {
    const fetchTodos = async () => {
       try {
          const response = await fetch(`http://localhost:5234/TodoLists/${id}`, {
-            method: "GET",
+            method: 'GET',
             headers: {
-               Accept: "application/json",
-               "Content-Type": "application/json",
+               Accept: 'application/json',
+               'Content-Type': 'application/json',
             },
          });
 
          if (!response.ok) {
-            throw new Error("Failed to fetch todos");
+            throw new Error('Failed to fetch todos');
          }
 
          const json = await response.json();
@@ -108,6 +108,7 @@ const TodoItemsView = () => {
          <Link to="/" className={'mb-4 flex flex-row justify-center'}>
             <img
                src={'/logo.svg'}
+               alt={'logo'}
                className={
                   'w-1/2 min-w-48 transition-transform duration-250 ease-out hover:scale-102'
                }
